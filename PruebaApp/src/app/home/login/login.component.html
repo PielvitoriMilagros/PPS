@@ -1,0 +1,16 @@
+
+<ion-label #user>Usuario</ion-label>
+<ion-input type="text" for="user" placeholder="Ingrese usuario" #usuario></ion-input>
+
+<ion-label #pass>Contraseña</ion-label>
+<ion-input type="password" for="pass" placeholder="Ingrese clave" #clave></ion-input>
+
+<ion-button type="button" class="btn btn-info" (click)="validarUsuario(usuario,clave)">Ingresar</ion-button>
+
+<div *ngIf="mostrar">
+<!-- <h3>{{usuario.value}}</h3>
+<h3>{{clave.value}}</h3> -->
+
+
+<h1>{{mensaje}}</h1>
+</div>
