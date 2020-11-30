@@ -1,0 +1,31 @@
+AGREGAR SONIDO
+
+POR CONSOLA:
+	ionic cordova plugin add cordova-plugin-nativeaudio
+	npm install @ionic-native/native-audio
+
+
+EN EL APP.MODULE.TS
+	import { NativeAudio } from '@ionic-native/native-audio/ngx';
+	
+	providers:[
+	...
+	...
+	NativeAudio,
+	...
+	]
+
+
+EN DONDE LO QUIERAS USAR
+
+	import { NativeAudio } from '@ionic-native/native-audio/ngx';
+	
+	constructor(private nativeAudio: NativeAudio){}
+	
+	//dentro de la función que quiera usarlo
+	this.nativeAudio.preloadSimple('idDelAudio', 'path/to/miAudio.mp3').then(onSuccess, onError);	// Precarga el audio miAudio guardandolo con id idDelAudio
+	this.nativeAudio.play('idDelAudio').then(onSuccess, onError);									// Reproduce el audio que corresponde al id que se le pasa
+
+A TENER EN CUENTA: No es necesario que la reproducción vaya inmediatamente después de la precarga,
+					queda más ordenado si se hace una función para cargar todos los ids, y después otra para reproducir
+					(en la tabla didáctica es lo mejor porque el sonido depende del botón)

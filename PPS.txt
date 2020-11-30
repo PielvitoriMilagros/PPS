@@ -1,0 +1,377 @@
+https://developer.android.com/studio
+https://ionicframework.com/docs/developing/android
+
+
+CREAR PROYECTO
+ionic start miApp
+ionic serve
+
+FIREBASE
+	Crear proyecto en la web - sacar el google
+	</> y copiar el environment sin el initialize
+	
+		
+	Crear proyecto
+	Cloud Firestore
+	Creo base de datos
+	Reglas --> allow read, write: if true;
+	Registrar app web, sin hosting
+
+npm i firebase @angular/fire
+Copiar firebaseconfig --> environment.ts
+		Sacarle el var, el ; y el =
+
+
+
+
+
+
+
+Tira error de Python y que no encuentra @angular-devkit
+npm install --save-dev @angular-devkit/build-angular
+
+
+
+╭━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━╮
+╰━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━╯
+
+█▀▀ ▄▀█ █▀█ ▄▀█ █▀▀ █ ▀█▀ █▀█ █▀█
+█▄▄ █▀█ █▀▀ █▀█ █▄▄ █ ░█░ █▄█ █▀▄
+---------------------------------
+AGREGAR CAPACITOR
+	ionic integrations enable capacitor
+	npx cap init
+	ionic build
+	npx cap add android    --- si ya existe la carpeta android, pincha
+	npx cap open android
+
+ANDROID STUDIO
+	Run -- Run 'app'
+	Build -- Build Bundle/APK -- Build APK
+
+
+CAMBIAR EL ÍCONO Y EL SPLASH
+ÍCONO
+ 1024 x 1024
+SPLASH
+ 2732 x 2732
+El splash tiene que tener esa medida pero la parte que tiene "imagen" no debe exceder los 1200px
+
+CREAR LA CARPETA RESOURCES A LA ALTURA DE SRC Y NODE_MODULES
+npm i capacitor -resources
+
+npm install capacitor-resources -g
+capacitor-resources
+
+			package.json
+"scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "resources": "capacitor-resources -p android"
+  },
+  
+ --- CORRER PARA ACTUALIZAS ICONO Y SPLASH
+ ---> npm run resources
+
+
+Crear en root de la carpeta del proyecto una carpeta resources y en esa carpeta colocar el icon.png y splash.png (con esos nombres)
+Instalar cordova-res (npm install -g cordova-res) para crear todos los iocns y splash
+Ejecutar cordova-res (cordova-res android --skip-config --copy)
+En capacitor.config.json dentro de plugins --> SplashScreen colocar la propiedad launchAutoHide con el valor false
+Ejecutar npx cap sync
+Ejecutar npx cap open android y ya desde Android Studio subirlo al celular
+
+CAMBIAR EL NOMBRE PARA NO PISAR LA APP ANTERIOR
+capacitor.config.json 
+
+hice un splash estatico y despues la animacion la hice con html y css en app.html de ionic
+
+ACTUALIZAR APK
+--- ionic build
+--- npx cap sync
+--- npx cap open android
+
+╭━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━┳━━╮
+╰━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━┻━━╯
+
+
+█▀▀ █▀█ █▀█ █▀▄ █▀█ █░█ ▄▀█
+█▄▄ █▄█ █▀▄ █▄▀ █▄█ ▀▄▀ █▀█
+
+
+npm i -g ionic cordova cordova-res    (cordova 10.0.0   cordova-res 10.0.15.1)
+ionic integrations enable cordova
+ionic cordova platform add android
+ionic cordova resources android   (si no funciona le agrego el --force)
+
+ionic cordova build --prod android      --> Genera la nueva apk
+----------------------------------
+ionic cordova platform remove android
+ionic cordova platform add android
+
+
+
+FORMAS DE CORRER EL EMULADOR (ver cual funciona)
+cordova run --emulator
+ionic cordova run android -l
+ionic cordova emulate android --target=Pixel_2_API_30 -l
+
+EMULADOR:
+Poner el celular en modo programador
+Conectarlo a la PC
+Activar la depuración por USB
+Ejecutar     ionic cordova run android -l
+Dejar el celular desbloqueado
+Esperar bastante, hasta que diga Run Succesful
+Ingresar desde Chrome a chrome://inspect
+
+
+
+▄▀█ █▄░█ █▀▄ █▀█ █▀█ █ █▀▄   █▀ ▀█▀ █░█ █▀▄ █ █▀█
+█▀█ █░▀█ █▄▀ █▀▄ █▄█ █ █▄▀   ▄█ ░█░ █▄█ █▄▀ █ █▄█
+
+Instalar Android Studio y abrirlo para continuar la instalación
+Instalar Gradle
+		
+	- Descargarme gradle desde https://gradle.org/next-steps/?version=6.6.1&format=all
+	- Crear el directorio C:\Gradle y descomprimir lo que me bajé directamente ahí adentro
+	
+	Crear las variables de entorno: Windows + 'variables' + Agrego nueva en el cuadro de abajo
+		- ANDROID_SDK_ROOT y asignarle la carpeta del SDK del Android Studio
+		- ANDROID_HOME y asignarle la carpeta del SDK del Android Studio
+		- JAVA_HOME y asignarle C:\Program Files\Android\Android Studio\jre
+		
+	- En la variable path (la de abajo) agregar:
+		- C:\Program Files\Android\Android Studio\jre
+		- C:\Gradle\gradle-6.6.1\bin
+		- la carpeta del SDK del Android Studio
+
+- Agregar a las variables del path
+	%ANDROID_HOME%\emulator
+	%ANDROID_HOME%\platform-tools
+	%ANDROID_HOME%\tools
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------
+
+ÍCONO
+ 1024 x 1024
+SPLASH
+ 2732 x 2732
+ 
+
+PARA EL SPLASH:
+--config.xml
+<preference name="FadeSplashScreen" value="false"/>
+<preference name="AutoHideSplashScreen" value="false"/>
+<preference name="ShowSplashScreenSpinner" value="false"/>
+
+
+creo una nueva pagina con el nombre splash y la direcciono ahí:
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.router.navigate(["home"]);
+    },5000);
+}
+
+En el app-routing agregar (o modificar)
+{path: '',redirectTo: 'splash',pathMatch: 'full'},
+
+
+
+CENTRAR
+
+		.scss
+.centrado{
+width: 100vw;
+height: 100vh;
+flex: auto;
+align-items: center;
+}
+
+
+MÁS DE UNA APP
+
+cambiar los campos id y name en el config.xml y sacar y volver a agregar android:
+ionic cordova platform remove android
+ionic cordova platform add android
+
+
+
+¡¡¡¡¡¡ Agregar a todos los plugins el /ngx en la importación !!!!!!
+
+
+
+UNA VEZ QUE USO PLUGINS NO SIRVE MAS EL IONIC SERVE
+	SE EJECUTA:
+		ionic cordova platform add browser
+		ionic cordova run browser						De ser necesario: npm i -g native-run
+
+
+
+
+
+DECLARAR UN COMPONENTE PARA USAR EN MÁS DE UNA PAGE
+- Agregar en el primer module al que entre, el componente: declarations y exports --> nombre del componente
+- En cada módulo que lo quiera usar, agregar en el imports el Module que modifiqué arriba
+----------------------------------------------------------------------------------------------------
+-Enviar dato de a otro componente
+	@Output() detallePelicula : EventEmitter<Pelicula> = new EventEmitter<Pelicula>();
+	this.detallePelicula.emit(pelicula);
+
+-Recibir dato de otro componente
+	@Input() peliculaDetalle: Peliculas;
+----------------------------------------------------------------------------------------------------
+GUARD
+CanActivate
+Agregar Router al import
+Agregar mi service al import
+		Agrego en mi servicio un logueado que me tire true o false
+Agrego un constructor para declarar route y auth
+Return del metodo del servicio, si da true devuelvo true, sino lo mando al login con navigate
+    return this.authService.logueado().then(resp =>{
+      if(resp){
+        return true;
+      }else{
+        this.router.navigate(['/Login']);
+        return false;
+      }
+    });
+	
+Al final del routing que quiero (en este caso el home) agregarle canActivate:[AuthGuard]
+----------------------------------------------------------------------------------------------------
+
+
+█░░ ▄▀█   █▀▀ █▀█ █▀▄▀█ ▄▀█ █▄░█ █▀▄ ▄▀█
+█▄▄ █▀█   █▄▄ █▄█ █░▀░█ █▀█ █░▀█ █▄▀ █▀█
+
+
+REGISTRO
+	dueño
+	supervisor
+	cliente  -> tipo -> registrado
+					 -> anónimo
+	empleado -> tipo -> mozo
+					 -> cocinero
+					 -> bartender
+					 -> metre
+
+BASE DE DATOS
+	usuarios -> nombre, apellido, dni, sexo, (cuil), (foto), perfil, (tipo), correo, (aprobado)
+
+dueño -> nombre, apellido, dni, sexo, cuil, foto, perfil, correo
+supervisor -> nombre, apellido, dni, sexo, cuil, foto, perfil, correo
+empleado -> nombre, apellido, dni, sexo, cuil, foto, perfil, correo, tipo
+cliente -> nombre, apellido, dni, sexo, foto, tipo
+		-> nombre, foto (anónimo)
+
+
+FUNCIONES (no incluyen delivery ni juegos)
+
+	dueño -> alta de dueño, supervisor y empleado
+		  -> confirmar mesa reservada
+		  -> recibe un push notification cuando se agenda una reserva
+		  -> confirmar cliente registrado
+	
+	supervisor -> alta de dueño, supervisor y empleado
+			   -> encuesta sobre un empleado o un cliente
+			   -> confirmar mesa reservada
+			   -> recibe push notification cuando se pide una mesa
+			   -> recibe un push notification cuando se agenda una reserva
+			   
+	cliente -> alta de cliente
+			-> manejo de QRs para ingreso, mesa y propina
+			-> encuesta de satisfacción
+			-> realizar un pedido (confirmar su llegada y cerrar la cuenta)
+			-> recibe push notification cuando le aceptan una reserva
+			
+	empleado -> encuesta sobre condiciones del lugar de trabajo, con cada login y logout
+			 -> listado de pedidos pendientes y gestión de estos (por tipo)
+			 -> recibe push notification cuando se realiza un pedido (por tipo)(comida, barra o cierre de cuenta)
+			 -> Alta de productos (solo cocinero o bartender)
+		-> metre -> recibe un push notification cuando se pide una mesa
+				-> alta de cliente
+				
+		-> mozo	-> confirmar cierre de cuenta
+				
+
+encuestas -> perfil, mail, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, imagen, mailReferencia
+empleado: conformidad(range), recibio o entrego llaves?(radio), lugares sucios(check), inconveniente?(input), cosas fuera de lugar?(select)
+cliente: conformidad(range),tiempo de espera mesa(select), tiempo de espera pedido(radio), comentario(input), Razones para volver a elegirnos(check)
+
+
+mesas -> numero, comensales, tipo, {cliente}, idPedido, idEncuesta?, estado
+																			-> libre
+																			-> lista para pedir
+																			-> pidiendo
+																			-> esperando pedido
+																			-> con consulta
+																			-> pedido entregado
+
+pedidos -> noaprobado
+		-> pendiente
+		-> finalizado
+		-> entregado
+		-> recibido
+		-> pagado
+		-> cerrado
+																			
+mesa -> cliente, comensales, estado, numero, pedido, tipo
+
+pedidos -> mesa, clienteID, productos[id], estadoProductos[], cantidades[], estado, total
+
+producto -> nombre, descripcion, tipo, tiempo, precio, fotoUno, fotoDos, fotoTres
+
+
+LOGIN
+Mostrar error si el usuario está pendiente de confirmación
+
+el cliente anónimo hace el circuito del cliente dentro del local y no requiere que nadie lo apruebe para ingresar
+el usuario se genera y se elimina cuando se termina de usar
+
+
+
+FILTER
+  showWinners() {
+    this.usersCopy = this.users.filter(user => user.payload.doc.data().win == true);
+  }
+
+
+    // var ages = [{a:"aaa",b:"sss"},{a:"ddd",b:"fff"},{a:"ggg",b:"hhh"}];
+
+    // function myFunction() {
+    // let arr = ages.filter(asd => asd.a=="ddd");
+    //   document.getElementById("demo").innerHTML = arr[0].a;
+    // }
+
+
+PUSH NOTIFICATIONS PUTO
+
+npm install -g cordova@latest
+npm uninstall @ionic-native/fcm
+ionic cordova plugin add cordova-plugin-fcm-with-dependecy-updated --variable ANDROID_DEFAULT_NOTIFICATION_ICON="@mipmap/ic_launcher" --variable ANDROID_FIREBASE_BOM_VERSION="26.0.0" --variable ANDROID_GOOGLE_SERVICES_VERSION="4.3.4" --variable ANDROID_GRADLE_TOOLS_VERSION="4.1.0"
+
+
+
+TOAST
+https://ionicframework.com/docs/api/toast
+
+
+
+
+
+APPS: https://drive.google.com/file/d/1zOpQo6V-6eIodldHQYySW5KQ38yeWovr/view
+
+
+
+
+
